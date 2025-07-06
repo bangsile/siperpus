@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>@yield('title', 'Perpustakaan')</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -27,6 +27,10 @@
                 <x-nav-link icon="fa-solid fa-chart-pie" href="{{ route('dashboard') }}"
                     active="{{ Route::is('dashboard') }}">
                     Dashboard
+                </x-nav-link>
+                <x-nav-link icon="fa-solid fa-users" href="{{ route('users') }}"
+                    active="{{ Route::is('users') }}">
+                    Pengguna
                 </x-nav-link>
 
                 <li class="mt-7">

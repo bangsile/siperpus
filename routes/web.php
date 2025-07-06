@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(AuthController::class)
@@ -12,3 +13,9 @@ Route::controller(AuthController::class)
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth')->name('dashboard');
+
+Route::controller(UserController::class)
+    ->middleware(['auth', 'role:admin'])
+    ->group(function () {
+        Route::get('/pengguna', 'index')->name('users');
+    });
