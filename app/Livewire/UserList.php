@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\User;
 use Livewire\WithPagination;
@@ -27,7 +28,8 @@ class UserList extends Component
 
     public function render()
     {
-        $users = User::when($this->search, fn($q) => $q->search($this->search))
+        $users = User::where('id', "!=", Auth::user()->id)
+        ->when($this->search, fn($q) => $q->search($this->search))
             ->orderBy('name')
             ->paginate($this->perPage); 
 
