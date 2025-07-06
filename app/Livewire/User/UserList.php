@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\User;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -33,7 +33,7 @@ class UserList extends Component
             ->orderBy('name')
             ->paginate($this->perPage); 
 
-        return view('livewire.user-list', [
+        return view('livewire.user.user-list', [
             'users' => $users,
         ]);
     }
