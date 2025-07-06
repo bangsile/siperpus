@@ -28,8 +28,8 @@
                     active="{{ Route::is('dashboard') }}">
                     Dashboard
                 </x-nav-link>
-                <x-nav-link icon="fa-solid fa-users" href="{{ route('users') }}"
-                    active="{{ Route::is('users') }}">
+                <x-nav-link icon="fa-solid fa-users" href="{{ route('users.index') }}"
+                    active="{{ Route::is('users.*') }}">
                     Pengguna
                 </x-nav-link>
 

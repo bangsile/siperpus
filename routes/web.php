@@ -17,5 +17,6 @@ Route::get('/dashboard', function () {
 Route::controller(UserController::class)
     ->middleware(['auth', 'role:admin'])
     ->group(function () {
-        Route::get('/pengguna', 'index')->name('users');
+        Route::get('/pengguna', 'index')->name('users.index');
+        Route::get('/pengguna/tambah', 'create')->name('users.create');
     });
