@@ -15,8 +15,10 @@ Route::get('/dashboard', function () {
 })->middleware('auth')->name('dashboard');
 
 Route::controller(UserController::class)
-    ->middleware(['auth', 'role:admin'])
+    ->middleware(['auth'])
     ->group(function () {
-        Route::get('/pengguna', 'index')->name('users.index');
-        Route::get('/pengguna/tambah', 'create')->name('users.create');
+        Route::get('/pengaturan/profile', 'profileSetting')->name('setting.profile');
+        Route::get('/pengaturan/password', 'passwordSetting')->name('setting.password');
+        Route::get('/pengguna', 'index')->middleware('role:admin')->name('users.index');
+        Route::get('/pengguna/tambah', 'create')->middleware('role:admin')->name('users.create');
     });

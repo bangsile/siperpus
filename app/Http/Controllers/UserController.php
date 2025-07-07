@@ -15,4 +15,14 @@ class UserController extends Controller
     {
         return view('pages.user.create');
     }
+
+    public function profileSetting()
+    {
+        return view('pages.setting.profile');
+    }
+
+    public function passwordSetting()
+    {
+        return view('pages.setting.password');
+    }
 }

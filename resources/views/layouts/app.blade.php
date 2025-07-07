@@ -28,10 +28,12 @@
                     active="{{ Route::is('dashboard') }}">
                     Dashboard
                 </x-nav-link>
-                <x-nav-link icon="fa-solid fa-users" href="{{ route('users.index') }}"
-                    active="{{ Route::is('users.*') }}">
-                    Pengguna
-                </x-nav-link>
+                @if (Auth::user()->hasRole('admin'))
+                    <x-nav-link icon="fa-solid fa-users" href="{{ route('users.index') }}"
+                        active="{{ Route::is('users.*') }}">
+                        Pengguna
+                    </x-nav-link>
+                @endif
 
                 <li class="mt-7">
                     <form action="{{ route('logout') }}" method="POST">
