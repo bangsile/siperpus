@@ -13,7 +13,7 @@ class ProfileForm extends Component
     public $username;
     public $role;
 
-    public function boot()
+    public function mount()
     {
         $this->name = Auth::user()->name;
         $this->username = Auth::user()->username;
