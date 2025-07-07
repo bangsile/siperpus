@@ -45,11 +45,14 @@ class UserCreateForm extends Component
             if ($user) {
                 $user->assignRole('admin');
             } else {
-                return redirect(route('users.create'))->with('errorCreate', 'Gagal menambahkan pengguna');
+                session()->flash('errorCreate', 'Gagal menambahkan pengguna');
+                return $this->redirect(route('users.create'), true);
             }
-            return redirect(route('users.index'))->with('successCreate', 'Berhasil menambahkan pengguna');
+            session()->flash('successCreate', 'Berhasil menambahkan pengguna');
+            return $this->redirect(route('users.index'), true);
         } catch (\Throwable $th) {
-            return redirect(route('users.create'))->with('errorCreate', 'Gagal menambahkan pengguna');
+            session()->flash('errorCreate', 'Gagal menambahkan pengguna');
+            return $this->redirect(route('users.create'), true);
         }
 
     }
