@@ -21,4 +21,5 @@ Route::controller(UserController::class)
         Route::get('/pengaturan/password', 'passwordSetting')->name('setting.password');
         Route::get('/pengguna', 'index')->middleware('role:admin')->name('users.index');
         Route::get('/pengguna/tambah', 'create')->middleware('role:admin')->name('users.create');
+        Route::get('/pengguna/{username}/edit', 'edit')->middleware('role:admin')->name('users.edit');
     });

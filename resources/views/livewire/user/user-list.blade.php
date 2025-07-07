@@ -42,8 +42,9 @@
                         <td class="px-6 py-4">{{ $user->email }}</td>
                         <td class="px-6 py-4">{{ $user->getRoleNames()->first() }}</td>
                         <td class="px-6 py-4 text-center">
-                            <span href="#" class=" p-2 rounded text-sm text-emerald-600 hover:text-emerald-700"><i
-                                    class="fa-solid fa-pen"></i></span>
+                            <a href="{{ route('users.edit', $user->username) }}" wire:navigate
+                                class=" p-2 rounded text-sm text-emerald-600 hover:text-emerald-700">
+                                <i class="fa-solid fa-pen"></i></a>
                             <button wire:click="confirmDelete('{{ $user->id }}')"
                                 class=" p-2 rounded text-sm text-red-500 hover:text-red-700">
                                 <i class="fa-solid fa-trash"></i></button>
@@ -63,8 +64,8 @@
     </div>
 
     @if ($showModal)
-        <x-modal-delete title="Yakin ingin menghapus pengguna ini?" confirmText="Ya, Hapus"
-            confirmAction="deleteUser" close="$set('showModal', false)">
+        <x-modal-delete title="Yakin ingin menghapus pengguna ini?" confirmText="Ya, Hapus" confirmAction="deleteUser"
+            close="$set('showModal', false)">
         </x-modal-delete>
     @endif
 

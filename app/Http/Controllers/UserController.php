@@ -16,6 +16,10 @@ class UserController extends Controller
         return view('pages.user.create');
     }
 
+    public function edit($username){
+        return view('pages.user.edit', compact('username'));
+    }
+
     public function profileSetting()
     {
         return view('pages.setting.profile');
