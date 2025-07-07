@@ -26,12 +26,30 @@ class UserList extends Component
         $this->resetPage();
     }
 
+    public $selectedUserId = null;
+    public $showModal = false;
+
+    public function confirmDelete($id)
+    {
+        $this->selectedUserId = $id;
+        $this->showModal = true;
+    }
+
+    public function deleteUser()
+    {
+        User::findOrFail($this->selectedUserId)->delete();
+        $this->showModal = false;
+        session()->flash('success', 'Berhasil menghapus pengguna');
+        return $this->redirect(route('users.index'), true);
+    }
+
+
     public function render()
     {
         $users = User::where('id', "!=", Auth::user()->id)
-        ->when($this->search, fn($q) => $q->search($this->search))
+            ->when($this->search, fn($q) => $q->search($this->search))
             ->orderBy('name')
-            ->paginate($this->perPage); 
+            ->paginate($this->perPage);
 
         return view('livewire.user.user-list', [
             'users' => $users,

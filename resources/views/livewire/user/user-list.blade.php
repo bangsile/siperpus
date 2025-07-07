@@ -36,14 +36,17 @@
             </thead>
             <tbody>
                 @forelse ($users as $user)
-                    <tr class="odd:bg-white even:bg-gray-50 border-b border-gray-200">
+                    <tr wire:key="{{ $user->id }}" class="odd:bg-white even:bg-gray-50 border-b border-gray-200">
                         <td class="px-6 py-4">{{ $user->name }}</td>
                         <td class="px-6 py-4">{{ $user->username }}</td>
                         <td class="px-6 py-4">{{ $user->email }}</td>
                         <td class="px-6 py-4">{{ $user->getRoleNames()->first() }}</td>
                         <td class="px-6 py-4 text-center">
-                            <span href="#" class=" p-2 rounded text-sm text-emerald-600 hover:text-emerald-700"><i class="fa-solid fa-pen"></i></span>
-                            <span href="#" class=" p-2 rounded text-sm text-red-500 hover:text-red-700"><i class="fa-solid fa-trash"></i></span>
+                            <span href="#" class=" p-2 rounded text-sm text-emerald-600 hover:text-emerald-700"><i
+                                    class="fa-solid fa-pen"></i></span>
+                            <button wire:click="confirmDelete('{{ $user->id }}')"
+                                class=" p-2 rounded text-sm text-red-500 hover:text-red-700">
+                                <i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
                 @empty
@@ -58,4 +61,11 @@
     <div class="pt-4">
         {{ $users->links('components.pagination-custom') }}
     </div>
+
+    @if ($showModal)
+        <x-modal-delete title="Yakin ingin menghapus pengguna ini?" confirmText="Ya, Hapus"
+            confirmAction="deleteUser" close="$set('showModal', false)">
+        </x-modal-delete>
+    @endif
+
 </div>
