@@ -43,7 +43,7 @@ class UserCreateForm extends Component
                 "password" => Hash::make($this->username)
             ]);
             if ($user) {
-                $user->assignRole('admin');
+                $user->assignRole($this->role);
             } else {
                 session()->flash('errorCreate', 'Gagal menambahkan pengguna');
                 return $this->redirect(route('users.create'), true);
