@@ -1,5 +1,5 @@
 <x-layouts.app>
-    @section('title', 'Tambah Pengguna | Perpustakaan')
+    @section('title', 'Edit Pengguna | Perpustakaan')
 
     <div class="p-4 mt-14">
         <section class="bg-white dark:bg-gray-900">
