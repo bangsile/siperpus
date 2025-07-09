@@ -1,4 +1,4 @@
-@props(['type', 'message', 'position' => 'bottom'])
+@props(['type', 'message', 'position' => 'top'])
 
 @php
     $iconColor;

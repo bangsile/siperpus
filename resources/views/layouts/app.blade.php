@@ -34,6 +34,10 @@
                         Pengguna
                     </x-nav-link>
                 @endif
+                <x-nav-link icon="fa-solid fa-book" href="{{ route('books.index') }}"
+                    active="{{ Route::is('books.*') }}">
+                    <span class="ms-1.5">Buku</span>
+                </x-nav-link>
 
                 <li class="mt-7">
                     <form action="{{ route('logout') }}" method="POST">

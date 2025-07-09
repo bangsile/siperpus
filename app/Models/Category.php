@@ -10,4 +10,9 @@ class Category extends Model
     use HasUuids;
 
     protected $fillable = ['code', 'name', 'shelf_id'];
+
+    public function books()
+    {
+        $this->hasMany(Book::class);
+    }
 }
